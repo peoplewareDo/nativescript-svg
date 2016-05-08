@@ -1,0 +1,29 @@
+{
+    "version": "1.6.2",
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "noEmitHelpers": true,
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "noImplicitUseStrict": true,
+        "experimentalDecorators": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "!node_modules/**/*.*",
+        "!bin/**/*.*",
+        "!build/**/*.*",
+        "!Deploy/**/*.*",
+        "!out/**/*.*",
+        "!.*/**/*.*",
+        "!obj/**/*.*"
+    ],
+    "files": [
+        "svg.d.ts",
+        "svg.ios.ts",
+        "svg.android.ts",
+        "svg.common.ts",
+    [
+}
