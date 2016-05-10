@@ -92,7 +92,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 }
 
-function getImageData(instance: UIImage, format: string, quality = 1.0): NSData {
+function getImageData(instance: SVGKImage, format: string, quality = 1.0): NSData {
     var data = null;
     switch (format) {
         case enums.ImageFormat.png: // PNG
@@ -100,7 +100,7 @@ function getImageData(instance: UIImage, format: string, quality = 1.0): NSData 
             break;
         case enums.ImageFormat.jpeg: // JPEG
             data = UIImageJPEGRepresentation(instance, quality);
-            break;
+            break;		
 
     }
     return data;
