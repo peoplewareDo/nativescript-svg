@@ -28,16 +28,14 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     public loadFromData(data: any): boolean {
-	// TODO missing method on the SVGKImage
-        //this.ios = SVGKImage.imageWithData(data);
+        this.ios = SVGKImage.imageWithData(data);
         return this.ios != null;
     }
 
     public loadFromBase64(source: string): boolean {
         if (types.isString(source)) {
             var data = NSData.alloc().initWithBase64EncodedStringOptions(source, NSDataBase64DecodingOptions.NSDataBase64DecodingIgnoreUnknownCharacters);
-	// TODO missing method on the SVGKImage
-        //this.ios = SVGKImage.imageWithData(data);
+            this.ios = SVGKImage.imageWithData(data);
         }
         return this.ios != null;
     }
@@ -52,8 +50,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
             return false;
         }
 
-        // TODO missing method on the SVGKImage
-        //var data = getImageData(this.ios, format, quality);
+        var data = getImageData(this.ios, format, quality);
 
         if (data) {
             return data.writeToFileAtomically(path, true);
@@ -68,8 +65,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
             return res;
         }
 
-        // TODO missing method on the SVGKImage
-        //var data = getImageData(this.ios, format, quality);
+        var data = getImageData(this.ios, format, quality);
 
         if (data) {
             res = data.base64Encoding();
@@ -94,4 +90,18 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
 
         return NaN;
     }
+}
+
+function getImageData(instance: UIImage, format: string, quality = 1.0): NSData {
+    var data = null;
+    switch (format) {
+        case enums.ImageFormat.png: // PNG
+            data = UIImagePNGRepresentation(instance);
+            break;
+        case enums.ImageFormat.jpeg: // JPEG
+            data = UIImageJPEGRepresentation(instance, quality);
+            break;
+
+    }
+    return data;
 }
