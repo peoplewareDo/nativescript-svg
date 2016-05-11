@@ -16,5 +16,8 @@ var SVG = require("nativescript-svg");
 var svgParser = new SVG.ImageSourceSVG();
 
 var source = svgParser.imageFromResource('foxie');
+
+var path = '//somepath/file.svg';
+source = svgParser.loadFromFile(path);
 ```
 
