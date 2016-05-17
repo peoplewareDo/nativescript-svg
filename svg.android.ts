@@ -65,12 +65,9 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
         return this.android != null;
     }
 
-/**
-TODO add support for base 64
-*/
     public loadFromBase64(source: string): boolean {
 	var bytes = android.util.Base64.decode(source, android.util.Base64.DEFAULT);
-	this.android = null;
+	this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new String(bytes));
         return this.android != null;
     }
 
@@ -86,12 +83,12 @@ TODO to be implemented
         return false;
     }
 
-/**
-TODO add support for base 64
-*/
-    public toBase64String(format: string, quality = 100): string {
+    public toBase64String(format: string): string {
+        if (!this.android) {
+            return null;;
+        }
 
-        return null;
+        return android.util.Base64.encodeToString(string, android.util.Base64.DEFAULT);
     }
 
     get height(): number {

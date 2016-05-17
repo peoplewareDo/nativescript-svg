@@ -59,13 +59,13 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
         return false;
     }
 
-    public toBase64String(format: string, quality?: number): string {
+    public toBase64String(format: string): string {
         var res = null;
         if (!this.ios) {
             return res;
         }
 
-        var data = getImageData(this.ios, format, quality);
+        var data = getImageData(this.ios, format, 1.0);
 
         if (data) {
             res = data.base64Encoding();
