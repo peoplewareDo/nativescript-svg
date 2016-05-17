@@ -11,7 +11,9 @@
 
 You use it in the same way you use Image source.
 
-**there are limitations: load from URL and the base64 encondig aren't working**
+v1.0.1 -- the base64 encondig included.
+
+**there are limitations: load from URL aren't working**
 
 ```js
 var SVG = require("nativescript-svg");
