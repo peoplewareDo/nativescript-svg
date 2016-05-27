@@ -12,7 +12,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
 
 
     public loadFromResource(name: string): boolean {
-        this.ios = SVGKImage.imageNamed(name) || SVGKImage.imageNamed(`${name}.jpg`);
+        this.ios = SVGKImage.imageNamed(name) || SVGKImage.imageNamed(`${name}.svg`);
         return this.ios != null;
     }
 
@@ -45,12 +45,12 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
         return source != null;
     }
 
-    public saveToFile(path: string, format: string, quality?: number): boolean {
+    public saveToFile(path: string): boolean {
         if (!this.ios) {
             return false;
         }
 
-        var data = getImageData(this.ios, format, quality);
+        var data = getImageData(this.ios);
 
         if (data) {
             return data.writeToFileAtomically(path, true);
@@ -65,10 +65,10 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
             return res;
         }
 
-        var data = getImageData(this.ios, format, 1.0);
+        var data = getImageData(this.ios);
 
         if (data) {
-            res = data.base64Encoding();
+            res = data.base64EncodedStringWithOptions(NSDataBase64DecodingOptions.NSDataBase64DecodingIgnoreUnknownCharacters);
         }
 
         return res;
@@ -92,16 +92,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 }
 
-function getImageData(instance: SVGKImage, format: string, quality = 1.0): NSData {
-    var data = null;
-    switch (format) {
-        case enums.ImageFormat.png: // PNG
-            data = UIImagePNGRepresentation(instance);
-            break;
-        case enums.ImageFormat.jpeg: // JPEG
-            data = UIImageJPEGRepresentation(instance, quality);
-            break;		
-
-    }
-    return data;
+function getImageData(instance: SVGKImage): NSData {
+    var buffer = instance.source.stream;
+    return NSData.alloc().initWithBytes(buffer, NSDataBase64DecodingOptions.NSDataBase64DecodingIgnoreUnknownCharacters);
 }

@@ -11,7 +11,7 @@
 
 You use it in the same way you use Image source.
 
-v1.0.1 -- the base64 encondig on Android included - IOS pending.
+v1.0.2 -- the base64 encondig on Android included - IOS pending.
 
 **there are limitations: load from URL and saveToFile aren't working**
 

@@ -79,7 +79,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
 /**
 TODO to be implemented
 */
-    public saveToFile(path: string, format: string, quality = 100): boolean {
+    public saveToFile(path: string): boolean {
         return false;
     }
 
