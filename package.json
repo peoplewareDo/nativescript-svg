@@ -1,6 +1,6 @@
 {
   "name": "nativescript-svg",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NativeScript SVG plugin",
   "main": "svg.js",
   "nativescript": {
