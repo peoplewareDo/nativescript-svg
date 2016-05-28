@@ -1,7 +1,7 @@
 import svg = require("svg");
 import types = require("utils/types");
 import fs = require("file-system");
-import common = require("./image-source-common");
+import common = require("image-source/image-source-common");
 
 
 global.moduleMerge(common, exports);
