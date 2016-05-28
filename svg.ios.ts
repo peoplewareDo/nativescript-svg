@@ -2,7 +2,7 @@ import svg = require("svg");
 import types = require("utils/types");
 import fs = require("file-system");
 import common = require("./image-source-common");
-import enums = require("ui/enums");
+
 
 global.moduleMerge(common, exports);
 

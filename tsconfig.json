@@ -1,11 +1,10 @@
 {
-    "version": "1.6.2",
     "compilerOptions": {
         "noEmitOnError": true,
         "noEmitHelpers": true,
         "target": "es5",
         "module": "commonjs",
-        "declaration": false,
+        "declaration": true,
         "noImplicitAny": false,
         "noImplicitUseStrict": true,
         "experimentalDecorators": true
@@ -24,6 +23,6 @@
         "svg.d.ts",
         "svg.ios.ts",
         "svg.android.ts",
-        "svg.common.ts",
-    [
+        "svg.common.ts"
+    ]
 }

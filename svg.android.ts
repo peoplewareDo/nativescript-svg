@@ -1,5 +1,5 @@
 import svg = require("svg");
-import common = require("./image-source-common");
+import common = require("image-source-common");
 import * as utilsModule from "utils/utils";
 import * as fileSystemModule from "file-system";
 import * as enumsModule from "ui/enums";
@@ -88,7 +88,7 @@ TODO to be implemented
             return null;;
         }
 
-        return android.util.Base64.encodeToString(string, android.util.Base64.DEFAULT);
+        return android.util.Base64.encodeToString(format, android.util.Base64.DEFAULT);
     }
 
     get height(): number {

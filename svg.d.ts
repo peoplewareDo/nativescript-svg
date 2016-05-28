@@ -9,7 +9,7 @@ declare module "svg" {
     /**
      * Encapsulates the common abstraction behind a platform specific object SVG that is used as a source for images.
      */
-    export class ImageSourceSVG extend imageSource.ImageSource {
+    export class ImageSourceSVG extends imageSource.ImageSource {
 	
     }
 
