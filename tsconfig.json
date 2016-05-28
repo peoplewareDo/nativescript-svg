@@ -1,13 +1,10 @@
 {
     "compilerOptions": {
-        "noEmitOnError": true,
-        "noEmitHelpers": true,
-        "target": "es5",
+	"target": "es5",
         "module": "commonjs",
-        "declaration": true,
-        "noImplicitAny": false,
-        "noImplicitUseStrict": true,
-        "experimentalDecorators": true
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
     "filesGlob": [
         "**/*.ts",
