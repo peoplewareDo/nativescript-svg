@@ -37,9 +37,6 @@
   "license": "MIT",
   "homepage": "https://github.com/peoplewareDo/nativescript-svg",
   "readmeFilename": "README.md",
-  "dependencies": {
-    "tns-core-modules": "2.0.0"
-  },
   "devDependencies": {
     "typescript": "^1.8.7"
   }
