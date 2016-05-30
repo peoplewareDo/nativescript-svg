@@ -27,7 +27,7 @@ function ensureEnums() {
     }
 }
 
-export class ImageSourceSVG implements svg.ImageSourceSVG {
+export class ImageSourceSVG extends svg.ImageSourceSVG {
     public android: com.larvalabs.svgandroid.SVG;
     public ios: SVGKImage;
 

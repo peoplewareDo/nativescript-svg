@@ -6,7 +6,7 @@ import common = require("image-source/image-source-common");
 
 global.moduleMerge(common, exports);
 
-export class ImageSourceSVG implements svg.ImageSourceSVG {
+export class ImageSourceSVG extends svg.ImageSourceSVG {
     public android: com.larvalabs.svgandroid.SVG;
     public ios: SVGKImage;
 
