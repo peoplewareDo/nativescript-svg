@@ -28,5 +28,6 @@ source = svgParser.loadFromFile(path);
 ```
 ###Release note
 v1.0.5 -- fix for npm package lib not including the .js files.
+
 v1.0.2 -- the base64 encondig on Android included - IOS pending.
 
