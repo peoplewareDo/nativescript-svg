@@ -1,5 +1,5 @@
 import svg = require("svg");
-import common = require("image-source/image-source-common");
+import common = require("./svg.common");
 import * as utilsModule from "utils/utils";
 import * as fileSystemModule from "file-system";
 import * as enumsModule from "ui/enums";
