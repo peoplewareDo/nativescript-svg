@@ -72,9 +72,9 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
     }
     
     public loadFromUrl(url: string): boolean {
-        var url = new java.net.URL(url);
-        var urlConnection = url.openConnection();
-        return setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
+        var httpUrl = new java.net.URL(url);
+        var urlConnection = httpUrl.openConnection();
+        return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
     }
 
     public setNativeSource(source: any): boolean {
