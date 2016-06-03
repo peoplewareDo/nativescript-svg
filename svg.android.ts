@@ -1,5 +1,6 @@
 import svg = require("svg");
 import common = require("./svg.common");
+import types = require("utils/types");
 import * as utilsModule from "utils/utils";
 import * as fileSystemModule from "file-system";
 import * as enumsModule from "ui/enums";
