@@ -1,12 +1,4 @@
 import utils = require("utils/utils");
-import * as httpModule from "http";
-
-var http: typeof httpModule;
-function ensureHttp() {
-    if (!http) {
-        http = require("http");
-    }
-}
 
 // This is used for definition purposes only, it does not generate JavaScript for it.
 import definition = require("svg");
@@ -36,9 +28,9 @@ export function fromNativeSource(source: any): definition.ImageSourceSVG {
     return image.setNativeSource(source) ? image : null;
 }
 
-export function fromUrl(url: string): Promise<definition.ImageSourceSVG> {
-    ensureHttp();
-    return http.getImage(url);
+export function fromUrl(url: string): definition.ImageSourceSVG {
+    var image = new definition.ImageSourceSVG();
+    return image.loadFromUrl(url) ? image : null;
 }
 
 export function fromFileOrResource(path: string): definition.ImageSourceSVG {

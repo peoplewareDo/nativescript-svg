@@ -41,7 +41,7 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
 	    var identifier: number = res.getIdentifier(name, 'drawable', utils.ad.getApplication().getPackageName());
             if (0 < identifier) {
                 // Load SVG
-		this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromResource(res, identifier);
+		        this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromResource(res, identifier);
             }
         }
 
@@ -66,9 +66,15 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
     }
 
     public loadFromBase64(source: string): boolean {
-	var bytes = android.util.Base64.decode(source, android.util.Base64.DEFAULT);
-	this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new String(bytes));
+	    var bytes = android.util.Base64.decode(source, android.util.Base64.DEFAULT);
+	    this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new String(bytes));
         return this.android != null;
+    }
+    
+    public loadFromUrl(url: string): boolean {
+        var url = new java.net.URL(url);
+        var urlConnection = url.openConnection();
+        return setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
     }
 
     public setNativeSource(source: any): boolean {

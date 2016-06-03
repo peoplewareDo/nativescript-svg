@@ -56,6 +56,18 @@ declare module "svg" {
          * @param source The Base64 string to load the image from.
          */
         fromBase64(source: string): Promise<boolean>;        
+        
+        /**
+         * Loads this instance from the specified url.
+         * @param url string to load the image from.
+         */
+        loadFromUrl(url: string): boolean;
+        
+        /**
+         * Loads this instance from the specified url asynchronously.
+         * @param url string to load the image from.
+         */
+        fromUrl(url: string): Promise<boolean>;   
 
        /**
         * Sets the provided native source object (typically a Bitmap).

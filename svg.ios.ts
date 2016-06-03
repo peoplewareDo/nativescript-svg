@@ -38,6 +38,12 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
         }
         return this.ios != null;
     }
+    
+    public loadFromUrl(url: string): boolean {
+	    this.ios = SVGKImage.imageWithContentsOfURL(NSURL.urlWithString(url));
+        
+        return this.ios != null;
+    }
 
     public setNativeSource(source: any): boolean {
         this.ios = source;
