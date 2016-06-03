@@ -25,6 +25,9 @@ var source = svgParser.imageFromResource('foxie');
 
 var path = '//somepath/file.svg';
 source = svgParser.loadFromFile(path);
+
+var url = 'http://somepath/file.svg';
+source = svgParser.loadFromUrl(url);
 ```
 ###Release note
 v1.0.9 -- load from URL on Android and IOS included.
