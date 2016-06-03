@@ -3,7 +3,6 @@
  * Allows you to parser SVG files.
  */
 declare module "svg" {
-    import common = require("image-source/image-source-common");
     import imageSource = require('image-source');
        
     /**

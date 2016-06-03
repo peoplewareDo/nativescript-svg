@@ -13,7 +13,7 @@ You use it in the same way you use Image source.
 
 Android Library | iOS CocoaPod
 --------------- | ------------
-[pents90 svg-android](https://github.com//svg-android) | [SVGKit by SVGKit](https://github.com/SVGKit/SVGKit)
+[pents90 svg-android](https://github.com/svg-android) | [SVGKit by SVGKit](https://github.com/SVGKit/SVGKit)
 
 **there are limitations: load from URL and saveToFile aren't working**
 
