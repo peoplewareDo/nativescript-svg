@@ -15,7 +15,7 @@ Android Library | iOS CocoaPod
 --------------- | ------------
 [pents90 svg-android](https://github.com/pents90/svg-android) | [SVGKit by SVGKit](https://github.com/SVGKit/SVGKit)
 
-**there are limitations: load from URL and saveToFile aren't working**
+**there are limitations: saveToFile aren't working**
 
 ```js
 var SVG = require("nativescript-svg");
@@ -27,6 +27,8 @@ var path = '//somepath/file.svg';
 source = svgParser.loadFromFile(path);
 ```
 ###Release note
+v1.0.9 -- load from URL on Android and IOS included.
+
 v1.0.7 -- Fix svg.common override issue
 
 v1.0.5 -- fix for npm package lib not including the .js files.
