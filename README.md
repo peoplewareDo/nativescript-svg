@@ -21,13 +21,19 @@ Android Library | iOS CocoaPod
 var SVG = require("nativescript-svg");
 var svgParser = new SVG.ImageSourceSVG();
 
-var source = svgParser.imageFromResource('foxie');
+var loaded = svgParser.imageFromResource('foxie');
 
 var path = '//somepath/file.svg';
-source = svgParser.loadFromFile(path);
+loaded = svgParser.loadFromFile(path);
 
 var url = 'http://somepath/file.svg';
-source = svgParser.loadFromUrl(url);
+loaded = svgParser.loadFromUrl(url);
+
+if(loaded){
+    console.log("object loaded");
+} else {
+    console.log("error");
+}
 ```
 ###Release note
 v1.0.9 -- load from URL on Android and IOS included.
