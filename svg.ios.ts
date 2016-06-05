@@ -1,4 +1,4 @@
-import svg = require("svg");
+import svg = require("./svg");
 import common = require("./svg.common");
 import types = require("utils/types");
 import fs = require("file-system");
@@ -6,9 +6,6 @@ import fs = require("file-system");
 global.moduleMerge(common, exports);
 
 export class ImageSourceSVG extends svg.ImageSourceSVG {
-    public android: com.larvalabs.svgandroid.SVG;
-    public ios: SVGKImage;
-
 
     public loadFromResource(name: string): boolean {
         this.ios = SVGKImage.imageNamed(name) || SVGKImage.imageNamed(`${name}.svg`);

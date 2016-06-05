@@ -1,4 +1,4 @@
-import svg = require("svg");
+import svg = require("./svg");
 import common = require("./svg.common");
 import types = require("utils/types");
 import * as utilsModule from "utils/utils";
@@ -29,8 +29,6 @@ function ensureEnums() {
 }
 
 export class ImageSourceSVG extends svg.ImageSourceSVG {
-    public android: com.larvalabs.svgandroid.SVG;
-    public ios: SVGKImage;
 
     public loadFromResource(name: string): boolean {
         this.android = null;

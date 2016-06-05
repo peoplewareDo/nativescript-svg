@@ -1,7 +1,7 @@
 import utils = require("utils/utils");
 
 // This is used for definition purposes only, it does not generate JavaScript for it.
-import definition = require("svg");
+import definition = require("./svg");
 
 export function fromResource(name: string): definition.ImageSourceSVG {
     var image = new definition.ImageSourceSVG();

@@ -2,13 +2,14 @@
 /**
  * Allows you to parser SVG files.
  */
-declare module "svg" {
-    import imageSource = require('image-source');
+//declare module "svg" {
        
     /**
      * Encapsulates the common abstraction behind a platform specific object SVG that is used as a source for images.
      */
-    export class ImageSourceSVG extends imageSource.ImageSource {
+    export class ImageSourceSVG {
+       public android: any;
+       public ios: any;
        /**
         * Loads this instance from the specified resource name.
         * @param name The name of the resource (without its extension).
@@ -90,4 +91,4 @@ declare module "svg" {
     }
 
 
-}
+//}
