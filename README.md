@@ -72,13 +72,18 @@ ImageSourceSVGModule.fromResource(name: string): ImageSourceSVG
 ###Roadmap
 Implement a similar image tag to be used as for example:
 ```xml
+<!--normal image tag-->
 <Image src="~/images/logo.svg" stretch ="none" />
 
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:svg="nativescript-svg" loaded="pageLoaded">
   <StackLayout>
+    <!--propose svg image tag-->
     <svg:svg src="~/image/nativescript.svg" height="100" />
     <svg:svg src="https://media4.giphy.com/media/3uyIgVxP1qAjS/200.svg" height="200" />
+    <svg:svg width="100" height="100"> <!-- this is more complicated to implement -->
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg:svg>
   </StackLayout> 
 </Page>  
 ```
