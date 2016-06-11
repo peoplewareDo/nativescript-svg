@@ -17,6 +17,7 @@ Android Library | iOS CocoaPod
 
 **there are limitations: saveToFile aren't working**
 
+
 ```js
 var SVG = require("nativescript-svg");
 var svgParser = new SVG.ImageSourceSVG();
@@ -35,7 +36,17 @@ if(loaded){
     console.log("error");
 }
 ```
+
+###Roadmap
+Implement image tag to be used as for example:
+```xml
+<Image src="~/images/logo.svg" stretch ="none" />
+```
+
+
 ###Release note
+v.1.0.11 -- Major fix for load library issue
+
 v1.0.9 -- load from URL on Android and IOS included.
 
 v1.0.7 -- Fix svg.common override issue
