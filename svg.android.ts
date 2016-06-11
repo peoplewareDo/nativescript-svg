@@ -1,4 +1,4 @@
-import svg = require("./svg");
+import svg =  require("nativescript-svg");
 import common = require("./svg.common");
 import types = require("utils/types");
 import * as utilsModule from "utils/utils";
@@ -28,7 +28,9 @@ function ensureEnums() {
     }
 }
 
-export class ImageSourceSVG extends svg.ImageSourceSVG {
+export class ImageSourceSVG implements svg.ImageSourceSVG {
+    public android: com.larvalabs.svgandroid.SVG;
+    public ios: SVGKImage;
 
     public loadFromResource(name: string): boolean {
         this.android = null;
@@ -47,6 +49,12 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
         return this.android != null;
     } 
 
+    public fromResource(name: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromResource(name));
+        });
+    }    
+
     public loadFromFile(path: string): boolean {
         ensureFS();
 
@@ -59,9 +67,21 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
         return this.android != null;
     }
 
+    public fromFile(path: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromFile(path));
+        });
+    }    
+
     public loadFromData(data: any): boolean {
         this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(data);
         return this.android != null;
+    }
+
+    public fromData(data: any): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromData(data));
+        });
     }
 
     public loadFromBase64(source: string): boolean {
@@ -69,12 +89,19 @@ export class ImageSourceSVG extends svg.ImageSourceSVG {
 	    this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new String(bytes));
         return this.android != null;
     }
+
+
+    public fromBase64(data: any): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromBase64(data));
+        });
+    }    
     
-    public loadFromUrl(url: string): boolean {
+    /*public loadFromUrl(url: string): boolean {
         var httpUrl = new java.net.URL(url);
         var urlConnection = httpUrl.openConnection();
         return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
-    }
+    }*/
 
     public setNativeSource(source: any): boolean {
         this.android = source;
@@ -112,4 +139,6 @@ TODO to be implemented
         return NaN;
     }
 
+
 }
+
