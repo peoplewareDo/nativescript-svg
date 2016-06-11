@@ -45,11 +45,11 @@ Implement image tag to be used as for example:
 
 
 ###Release note
-v.1.0.11 -- Major fix for load library issue
+v.1.0.11 -- Major fix for load library issue.
 
 v1.0.9 -- load from URL on Android and IOS included.
 
-v1.0.7 -- Fix svg.common override issue
+v1.0.7 -- Fix svg.common override issue.
 
 v1.0.5 -- fix for npm package lib not including the .js files.
 
