@@ -58,7 +58,7 @@ if(loaded){
 - Downloads the image from the provided Url and creates a new ImageSourceSVG instance from it.
 
 ***
-You can call every method in two way, for example:
+You can call every method in two ways, for example:
 ```
 //from the svf file object
 svgFile.loadFromResource(name: string): boolean
@@ -90,7 +90,7 @@ ver 1.5 Implement a similar image tag to be used as for example:
 
 
 ###Release note
-v.1.0.11 -- Major fix for load library issue.
+v.1.0.11 -- Major fix for load library issue and demo include.
 
 v1.0.9 -- load from URL on Android and IOS included.
 
