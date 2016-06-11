@@ -1,4 +1,7 @@
-*.js
+svg.d.js
+svg.common.js
+svg.ios.js
+svg.android.js
 *.js.map
 *.log
 demo/*.d.ts

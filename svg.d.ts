@@ -4,10 +4,12 @@
  */
 
 declare module 'nativescript-svg' {
+
     /**
      * Encapsulates the common abstraction behind a platform specific object SVG that is used as a source for images.
      */
     export class ImageSourceSVG {
+
         /**
          * Gets the height of this instance. This is a read-only property.
          */
