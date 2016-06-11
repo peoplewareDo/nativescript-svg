@@ -70,7 +70,7 @@ ImageSourceSVGModule.fromResource(name: string): ImageSourceSVG
 ```
 
 ###Roadmap
-Implement a similar image tag to be used as for example:
+ver 1.5 Implement a similar image tag to be used as for example:
 ```xml
 <!--normal image tag-->
 <Image src="~/images/logo.svg" stretch ="none" />
