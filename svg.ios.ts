@@ -111,6 +111,12 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
 
         return this.ios != null;
     }
+    
+    public fromUrl(url:string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromUrl(url));
+        });        
+    }    
 
     public setNativeSource(source: any): boolean {
         this.ios = source;

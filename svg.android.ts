@@ -97,11 +97,17 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
         });
     }    
     
-    /*public loadFromUrl(url: string): boolean {
+    public loadFromUrl(url: string): boolean {
         var httpUrl = new java.net.URL(url);
         var urlConnection = httpUrl.openConnection();
         return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
-    }*/
+    }
+
+    public fromUrl(url:string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            resolve(this.loadFromUrl(url));
+        });        
+    }
 
     public setNativeSource(source: any): boolean {
         this.android = source;
