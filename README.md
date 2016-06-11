@@ -15,7 +15,7 @@ Android Library | iOS CocoaPod
 --------------- | ------------
 [pents90 svg-android](https://github.com/pents90/svg-android) | [SVGKit by SVGKit](https://github.com/SVGKit/SVGKit)
 
-**there are limitations: saveToFile aren't working**
+**there are limitations: saveToFile ins't working**
 
 ###Quick start
 ```js
