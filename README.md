@@ -5,7 +5,6 @@
 ##Install
 `tns plugin add nativescript-svg`
 
-#
 
 ###Usage
 
@@ -15,7 +14,8 @@ Android Library | iOS CocoaPod
 --------------- | ------------
 [pents90 svg-android](https://github.com/pents90/svg-android) | [SVGKit by SVGKit](https://github.com/SVGKit/SVGKit)
 
-**there are limitations: saveToFile ins't working**
+**there are limitations: **
+    - saveToFile ins't working
 
 ###Quick start
 ```js
@@ -54,14 +54,15 @@ if(loaded){
 ##### ImageSourceSVGModule.fromBase64(source: string): ImageSourceSVG
 - Creates a new ImageSourceSVG instance and loads it from the specified resource name.
 
-##### ImageSourceSVGModule.fromUrl(url: string): Promise<ImageSourceSVG>;
+##### ImageSourceSVGModule.fromUrl(url: string): Promise<ImageSourceSVG>
 - Downloads the image from the provided Url and creates a new ImageSourceSVG instance from it.
 
 ***
 You can call every method in two ways, for example:
 ```
 //from the svf file object
-svgFile.loadFromResource(name: string): boolean
+svgFile.loadFromResource(name: string): boolean  // synchronously
+svgFile.fromResource(name: string): ImageSourceSVG //asynchronously
 ```
 or 
 ```
@@ -90,7 +91,7 @@ ver 1.5 Implement a similar image tag to be used as for example:
 
 
 ###Release note
-v.1.0.11 -- Major fix for load library issue and demo include.
+v1.0.11 -- Major fix for load library issue and demo include.
 
 v1.0.9 -- load from URL on Android and IOS included.
 
