@@ -54,7 +54,7 @@ if(loaded){
 ##### ImageSourceSVGModule.fromBase64(source: string): ImageSourceSVG
 - Creates a new ImageSourceSVG instance and loads it from the specified resource name.
 
-##### ImageSourceSVGModule.fromUrl(url: string): Promise<ImageSourceSVG>
+##### ImageSourceSVGModule.fromUrl(url: string): Promise:ImageSourceSVG
 - Downloads the image from the provided Url and creates a new ImageSourceSVG instance from it.
 
 ***
@@ -71,6 +71,7 @@ ImageSourceSVGModule.fromResource(name: string): ImageSourceSVG
 ```
 
 ###Roadmap
+ver 1.1 Change api dependency from pents90/svg-android to Pixplicity/sharp
 ver 1.5 Implement a similar image tag to be used as for example:
 ```xml
 <!--normal image tag-->
