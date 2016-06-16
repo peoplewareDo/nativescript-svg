@@ -71,24 +71,23 @@ ImageSourceSVGModule.fromResource(name: string): ImageSourceSVG
 ```
 
 ###Roadmap
-ver 1.1 Change api dependency from pents90/svg-android to Pixplicity/sharp
-ver 1.5 Implement a similar image tag to be used as for example:
+ver 1.1 Implement a similar image tag to be used as for example:
 ```xml
-<!--normal image tag-->
-<Image src="~/images/logo.svg" stretch ="none" />
-
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
       xmlns:svg="nativescript-svg" loaded="pageLoaded">
   <StackLayout>
     <!--propose svg image tag-->
-    <svg:svg src="~/image/nativescript.svg" height="100" />
-    <svg:svg src="https://media4.giphy.com/media/3uyIgVxP1qAjS/200.svg" height="200" />
-    <svg:svg width="100" height="100"> <!-- this is more complicated to implement -->
+    <svg:SVGImage src="~/image/nativescript.svg" height="100" />
+    <svg:SVGImage src="https://media4.giphy.com/media/3uyIgVxP1qAjS/200.svg" height="200" />
+    <svg:SVGImage width="100" height="100"> <!-- this is more complicated to implement, pending to be implemented -->
         <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
     </svg:svg>
+    <!--normal image tag-->
+    <Image src="~/images/logo.svg" stretch ="none" />    
   </StackLayout> 
 </Page>  
 ```
+ver 1.2 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ###Release note
