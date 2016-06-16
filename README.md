@@ -78,9 +78,7 @@ Since ver 1.1 Implement a similar image tag to be used as for example:
     <!--svg image tag-->
     <svg:SVGImage src="~/image/nativescript.svg" height="100" />
     <svg:SVGImage src="https://media4.giphy.com/media/3uyIgVxP1qAjS/200.svg" height="200" />
-    <svg:SVGImage width="100" height="100"> <!-- this is more complicated to implement, pending to be implemented -->
-        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-    </svg:svg>
+
     <!--normal image tag-->
     <Image src="~/images/logo.svg" stretch ="none" />    
   </StackLayout> 
@@ -88,7 +86,13 @@ Since ver 1.1 Implement a similar image tag to be used as for example:
 ```
 
 ###Roadmap
-
+ver 1.1.3 implement an svg tag that can support svg tags.
+```
+<!-- this is more complicated to implement, pending to be implemented -->
+    <svg:SVGImage width="100" height="100"> 
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg:svg>
+```
 ver 1.2 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
