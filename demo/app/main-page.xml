@@ -1,8 +1,11 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:svg="nativescript-svg" navigatingTo="onNavigatingTo">
   <StackLayout>
     <Label text="Tap the button" class="title"/>
     <Button text="TAP" tap="{{ onTap }}" />
     <Label text="{{ message }}" class="message" textWrap="true"/>
     <Label text="{{ message2 }}" class="message" textWrap="true"/>
+    <svg:SVGImage src="~/images/nativescript.svg" />
+    <!--<Image src="~/images/nativescript.png" /> -->
   </StackLayout>
 </Page>

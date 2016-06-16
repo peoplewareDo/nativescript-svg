@@ -1,9 +1,76 @@
+/// <reference path="node_modules/tns-core-modules/http/http.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/utils/types.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/utils/utils.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/enums/enums.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/core/dependency-observable.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/core/proxy.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/styling/styling.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/core/view.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/ui/styling/background.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/file-system/file-system.d.ts"/>
+/// <reference path="node_modules/tns-core-modules/platform/platform.d.ts"/>
 
 /**
  * Allows you to parser SVG files.
  */
 
 declare module 'nativescript-svg' {
+
+    import dependencyObservable = require("ui/core/dependency-observable");
+    import * as view from "ui/core/view";
+
+    /**
+     * Represents a class that provides functionality for loading svg(s).
+     */
+    export class SVGImage extends view.View {
+        public static srcProperty: dependencyObservable.Property;
+        public static imageSourceProperty: dependencyObservable.Property;
+        public static isLoadingProperty: dependencyObservable.Property;
+
+        /**
+         * Gets the native [android widget](http://developer.android.com/reference/android/widget/ImageView.html) that represents the user interface for this component. Valid only when running on Android OS.
+        */
+        android: any /* android.widget.ImageView */;
+
+        /**
+         * Gets the native iOS [UIImageView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/) that represents the user interface for this component. Valid only when running on iOS.
+         */
+        ios: any /* UIImageView */;
+
+        /**
+         * Gets or sets the image source of the image.
+         */
+        imageSource: ImageSourceSVG;
+
+        /**
+         * Gets or sets the source of the svg. This can be either an URL string or a native svg instance.
+         */
+        src: any;
+
+        /**
+         * Gets a value indicating if the svg is currently loading
+         */
+        isLoading: boolean;
+
+        /**
+         * Gets or sets the loading strategy for images on the local file system:
+         * - **sync** *(default)* - blocks the UI if necessary to display immediately, good for small icons.
+         * - **async** - will try to load in the background, may appear with short delay, good for large images.
+         */
+        loadMode: string; // "sync" | "async";        
+    }
+
+
+   /**
+   * Provides common options for creating a animation
+   */
+    export interface Options extends view.Options {
+
+        /**
+         * Gets or sets the URL of the svg
+         */
+        src: string;
+    }    
 
     /**
      * Encapsulates the common abstraction behind a platform specific object SVG that is used as a source for images.
@@ -25,7 +92,7 @@ declare module 'nativescript-svg' {
         ios: any /* SVGKImage */;
 
         /**
-         * The Android-specific instance. Will be undefined when running on iOS.
+         * The Android-specific instance. Will be undefined when running on iOS. 
          */
         android: any /* com.larvalabs.svgandroid.SVG */;
 
@@ -90,9 +157,9 @@ declare module 'nativescript-svg' {
         fromUrl(url: string): Promise<boolean>;
 
         /**
-         * Sets the provided native source object (typically a Bitmap).
+         * Sets the provided native source object.
          * This will update either the android or ios properties, depending on the target os.
-         * @param source The native image object. Will be either a Bitmap for Android or a UIImage for iOS.
+         * @param source The native image object. Will be either a svg for Android or a UIImage for iOS.
          */
         setNativeSource(source: any): boolean;
 
@@ -134,7 +201,7 @@ declare module 'nativescript-svg' {
     export function fromBase64(source: string): ImageSourceSVG;
 
     /**
-     * Creates a new ImageSourceSVG instance and sets the provided native source object (typically a Bitmap).
+     * Creates a new ImageSourceSVG instance and sets the provided native source object.
      * The native source object will update either the android or ios properties, depending on the target os.
      * @param source The native image object. Will be either a Bitmap for Android or a UIImage for iOS.
      */
