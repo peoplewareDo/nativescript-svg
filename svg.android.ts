@@ -11,6 +11,15 @@ import style = require("ui/styling/style");
 import view = require("ui/core/view");
 import background = require("ui/styling/background");
 
+import * as httpModule from "http";
+
+var http: typeof httpModule;
+function ensureHttp() {
+    if (!http) {
+        http = require("http");
+    }
+}
+
 global.moduleMerge(common, exports);
 
 var utils: typeof utilsModule;
@@ -109,9 +118,12 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     public loadFromUrl(url: string): boolean {
-        var httpUrl = new java.net.URL(url);
-        var urlConnection = httpUrl.openConnection();
-        return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
+        ensureHttp();
+        var result = http.getString(url);
+        return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromString(result));
+        //var httpUrl = new java.net.URL(url);
+        //var urlConnection = httpUrl.openConnection();
+        //return this.setNativeSource(new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(urlConnection.getInputStream()));
     }
 
     public fromUrl(url: string): Promise<boolean> {
