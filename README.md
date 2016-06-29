@@ -99,6 +99,8 @@ ver 1.2 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ###Release note
+v1.1.1 -- Fix load url async task issue#2
+
 v1.1.0 -- Implemented a similar image tag to render svg images.
 
 v1.0.11 -- Major fix for load library issue and demo include.
