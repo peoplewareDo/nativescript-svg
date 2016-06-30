@@ -187,20 +187,20 @@ function onImageSourcePropertyChanged(data: dependencyObservable.PropertyChangeD
 (<proxy.PropertyMetadata>common.SVGImage.imageSourceProperty.metadata).onSetNativeValue = onImageSourcePropertyChanged;
 
 export class SVGImage extends common.SVGImage {
-    private _ios: UIImageView;
+    private _ios: SVGKFastImageView;
     private _imageSourceAffectsLayout: boolean = true;
 
     constructor() {
         super();
 
         //TODO: Think of unified way of setting all the default values.
-        this._ios = new UIImageView();
-        this._ios.contentMode = UIViewContentMode.UIViewContentModeScaleAspectFit;
-        this._ios.clipsToBounds = true;
-        this._ios.userInteractionEnabled = true;
+        this._ios = new SVGKFastImageView();
+        //this._ios.contentMode = UIViewContentMode.UIViewContentModeScaleAspectFit;
+        //this._ios.clipsToBounds = true;
+        //this._ios.userInteractionEnabled = true;
     }
 
-    get ios(): UIImageView {
+    get ios(): SVGKFastImageView {
         return this._ios;
     }
 
