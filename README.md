@@ -88,7 +88,7 @@ Since ver 1.1 Implement a similar image tag to be used as for example:
 ```
 
 ###Roadmap
-ver 1.1.3 implement an SVGImage tag that can support svg tags.
+ver 1.3 implement an SVGImage tag that can support svg tags.
 ```
 <!-- this is more complicated to implement, pending to be implemented -->
     <svg:SVGImage width="100" height="100"> 
@@ -99,7 +99,7 @@ ver 1.2 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ###Release note
-v1.1.2 -- Fix SVGImage for iOS - SVGKFastImageView issue#3
+v1.1.3 -- Fix SVGImage for iOS - SVGKFastImageView issue#3
 
 v1.1.0 -- Implemented a similar image tag to render svg images.
 
