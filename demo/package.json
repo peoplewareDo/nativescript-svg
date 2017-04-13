@@ -6,12 +6,15 @@
   "nativescript": {
     "id": "org.nativescript.demo3",
     "tns-android": {
-      "version": "2.0.0"
+      "version": "3.0.0-next-2017-04-11-1736"
+    },
+    "tns-ios": {
+      "version": "3.0.0-2017-4-10-2"
     }
   },
   "dependencies": {
-    "nativescript-svg": "^1.0.11",
-    "tns-core-modules": "2.0.1"
+    "nativescript-svg": "file:///Users/haiderghaleb/Sites/nativescript/ng-svg",
+    "tns-core-modules": "^2.6.0-2017-02-08-5576"
   },
   "devDependencies": {
     "babel-traverse": "6.9.0",

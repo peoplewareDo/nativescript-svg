@@ -2,7 +2,7 @@ var Observable = require("data/observable").Observable;
 var SVG = require("nativescript-svg");
 var svgParser = new SVG.ImageSourceSVG();
 
-var path = '~/images/nativescript.svg';
+var path = '~/images/spider-test.svg';
 
 
 function getMessage(counter) {
@@ -14,7 +14,15 @@ function getMessage(counter) {
 }
 
 function createViewModel() {
-    var loaded = svgParser.loadFromFile(path);
+
+    var loaded = svgParser.fromResource('images/spider-test.svg');
+    if(loaded){
+        console.log("object loaded");
+    } else {
+        console.log("error");
+    }
+
+    // var loaded = svgParser.loadFromFile(path);
     var viewModel = new Observable();
     viewModel.counter = 42;
     viewModel.message = getMessage(viewModel.counter);

@@ -1,14 +1,14 @@
-/// <reference path="node_modules/tns-core-modules/http/http.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/utils/types.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/utils/utils.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/enums/enums.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/core/dependency-observable.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/core/proxy.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/styling/styling.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/core/view.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/ui/styling/background.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/file-system/file-system.d.ts"/>
-/// <reference path="node_modules/tns-core-modules/platform/platform.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/http/http.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/utils/types.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/utils/utils.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/enums/enums.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/core/dependency-observable.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/core/proxy.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/styling/styling.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/core/view.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/ui/styling/background.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/file-system/file-system.d.ts"/>
+/// <reference path="./demo/node_modules/tns-core-modules/platform/platform.d.ts"/>
 
 /**
  * Allows you to parser SVG files.
