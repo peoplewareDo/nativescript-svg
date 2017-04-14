@@ -99,6 +99,8 @@ ver 1.2 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ###Release note
+v1.1.4 -- Fix svg & demo
+
 v1.1.3 -- Fix SVGImage for iOS - SVGKFastImageView issue#3
 
 v1.1.0 -- Implemented a similar image tag to render svg images.
