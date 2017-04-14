@@ -19,6 +19,7 @@
         "!obj/**/*.*"
     ],
     "files": [
+        "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
         "svg.d.ts",
         "svg.common.ts",
         "svg.ios.ts",

@@ -247,13 +247,24 @@ export class ImageStyler implements style.Styler {
         // Use the same handler for all background/border properties
         // Note: There is no default value getter - the default value is handled in background.ad.onBackgroundOrBorderPropertyChanged
 
-        style.registerHandler(style.borderRadiusProperty, new style.StylePropertyChangedHandler(
-            ImageStyler.setBorderRadiusProperty,
-            ImageStyler.resetBorderRadiusProperty), "SVGImage");
+        style.registerHandler(style.borderTopWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+        style.registerHandler(style.borderRightWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+        style.registerHandler(style.borderBottomWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+        style.registerHandler(style.borderLeftWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
 
-        style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(
-            ImageStyler.setBorderWidthProperty,
-            ImageStyler.resetBorderWidthProperty), "SVGImage");
+        style.registerHandler(style.borderTopLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+        style.registerHandler(style.borderTopRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+        style.registerHandler(style.borderBottomRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+        style.registerHandler(style.borderBottomLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+
+
+        // style.registerHandler(style.borderRadiusProperty, new style.StylePropertyChangedHandler(
+        //     ImageStyler.setBorderRadiusProperty,
+        //     ImageStyler.resetBorderRadiusProperty), "SVGImage");
+
+        // style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(
+        //     ImageStyler.setBorderWidthProperty,
+        //     ImageStyler.resetBorderWidthProperty), "SVGImage");
     }
 }
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="333px" height="261px" viewBox="0 0 333 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="User-Profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="User-Profile---Spiderweb" transform="translate(-25.000000, -348.000000)">
+            <g id="Newsfeed-Top-Bar" transform="translate(0.000000, 58.000000)">
+                <g id="Group-3" transform="translate(24.000000, 288.000000)">
+                    <circle id="Oval" fill="#323A4A" cx="164" cy="134" r="106"></circle>
+                    <circle id="Oval" fill="#394255" cx="164" cy="134" r="82"></circle>
+                    <circle id="Oval" fill="#444F65" cx="164" cy="134" r="58"></circle>
+                    <circle id="Oval" fill="#4D5973" cx="164" cy="134" r="34"></circle>
+                    <circle id="Oval-3" fill="#71D3BA" cx="164" cy="134" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" cx="164" cy="28" r="5"></circle>
+                    <polygon id="Path-2" stroke="#71D3BA" stroke-width="2" points="165 52 89 59 82 134 123 175 164 216 223 192 223 133 239 59"></polygon>
+                    <text id="Acceleration" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="127.945539" y="262">Acceleration</tspan>
+                    </text>
+                    <text id="Vertical-Leap" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="126.854656" y="12">Vertical Leap</tspan>
+                    </text>
+                    <text id="Passing" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="252.166066" y="228">Passing</tspan>
+                    </text>
+                    <text id="Dribbling" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="22.0260489" y="228">Dribbling</tspan>
+                    </text>
+                    <text id="Agility" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="252.336477" y="50">Agility</tspan>
+                    </text>
+                    <text id="Shooting" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="22.5773809" y="50">Shooting</tspan>
+                    </text>
+                    <text id="Ball-Control" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="11.4460391" y="134">Ball</tspan>
+                        <tspan x="0.476857454" y="149">Control</tspan>
+                    </text>
+                    <text id="Stamina" font-family="SanFranciscoText-Medium, San Francisco Text" font-size="13" font-weight="400" letter-spacing="-0.0780000091" fill="#3E485C">
+                        <tspan x="284.706106" y="138">Stamina</tspan>
+                    </text>
+                    <circle id="Oval-3" fill="#97ECBE" cx="164" cy="240" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(58.000000, 144.000000) rotate(-90.000000) translate(-58.000000, -144.000000) " cx="58" cy="144" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(270.000000, 144.000000) rotate(-90.000000) translate(-270.000000, -144.000000) " cx="270" cy="144" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(94.046681, 221.024387) rotate(-90.000000) translate(-94.046681, -221.024387) " cx="94.0466812" cy="221.024387" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(243.953319, 71.117749) rotate(-90.000000) translate(-243.953319, -71.117749) " cx="243.953319" cy="71.117749" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(86.975613, 64.046681) rotate(-90.000000) translate(-86.975613, -64.046681) " cx="86.9756134" cy="64.0466812" r="5"></circle>
+                    <circle id="Oval-3" fill="#97ECBE" transform="translate(236.882251, 213.953319) rotate(-90.000000) translate(-236.882251, -213.953319) " cx="236.882251" cy="213.953319" r="5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
