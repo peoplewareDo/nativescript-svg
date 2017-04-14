@@ -5,7 +5,8 @@
     <Button text="TAP" tap="{{ onTap }}" />
     <Label text="{{ message }}" class="message" textWrap="true"/>
     <Label text="{{ message2 }}" class="message" textWrap="true"/>
-    <svg:SVGImage src="~/images/nativescript.svg" />
-    <!--<Image src="~/images/nativescript.png" /> -->
+    <svg:SVGImage src="~/images/nativescript.svg" height="100"/>
+    <svg:SVGImage src="https://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg" height="110"/>
+    <Image src="https://en.wikipedia.org/static/images/project-logos/enwiki.png" height="100" /> 
   </StackLayout>
 </Page>
