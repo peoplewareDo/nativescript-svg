@@ -13,7 +13,7 @@
     }
   },
   "dependencies": {
-    "nativescript-svg": "../",
+    "nativescript-svg": "../src/",
     "tns-core-modules": "^3.0.0"
   },
   "devDependencies": {
