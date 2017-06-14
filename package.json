@@ -1,12 +1,12 @@
 {
   "name": "nativescript-svg",
-  "version": "1.1.4",
+  "version": "3.0.0",
   "description": "NativeScript SVG plugin",
   "main": "svg.js",
   "nativescript": {
     "platforms": {
-      "android": "2.0.0",
-      "ios": "1.4.0"
+      "android": "3.0.0",
+      "ios": "3.0.0"
     }
   },
   "scripts": {
@@ -38,6 +38,8 @@
   "homepage": "https://github.com/peoplewareDo/nativescript-svg",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "typescript": "^1.8.7"
+    "tns-core-modules": "^3.0.0 || ^3.0.0-rc.1",
+    "tns-platform-declarations": "^3.0.0 || ^3.0.0-rc.1",
+    "typescript": "^2.2.2"
   }
 }

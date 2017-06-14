@@ -1,17 +1,16 @@
 import svg = require("nativescript-svg");
 import common = require("./svg.common");
-import types = require("utils/types");
-import * as utilsModule from "utils/utils";
-import * as fileSystemModule from "file-system";
-import * as enumsModule from "ui/enums";
+import types = require("tns-core-modules/utils/types");
+import * as utilsModule from "tns-core-modules/utils/utils";
+import * as fileSystemModule from "tns-core-modules/file-system";
+import * as enumsModule from "tns-core-modules/ui/enums";
 
-import dependencyObservable = require("ui/core/dependency-observable");
-import proxy = require("ui/core/proxy");
-import style = require("ui/styling/style");
-import view = require("ui/core/view");
-import background = require("ui/styling/background");
+import dependencyObservable = require("tns-core-modules/ui/core/dependency-observable");
+import style = require("tns-core-modules/ui/styling/style");
+import view = require("tns-core-modules/ui/core/view");
+import background = require("tns-core-modules/ui/styling/background");
 
-import * as httpModule from "http";
+import * as httpModule from "tns-core-modules/http";
 
 var http: typeof httpModule;
 function ensureHttp() {
@@ -49,11 +48,10 @@ declare var java: any;
 declare var org: any;
 
 export class ImageSourceSVG implements svg.ImageSourceSVG {
-    public android: com.larvalabs.svgandroid.SVG;
-    public ios: SVGKImage;
+    private nativeView: any;
 
     public loadFromResource(name: string): boolean {
-        this.android = null;
+        this.nativeView = null;
 
         ensureUtils();
 
@@ -62,11 +60,11 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
             var identifier: number = res.getIdentifier(name, 'drawable', utils.ad.getApplication().getPackageName());
             if (0 < identifier) {
                 // Load SVG
-                this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromResource(res, identifier);
+                this.nativeView = new com.larvalabs.svgandroid.SVGParser.getSVGFromResource(res, identifier);
             }
         }
 
-        return this.android != null;
+        return this.nativeView != null;
     }
 
     public fromResource(name: string): Promise<boolean> {
@@ -83,8 +81,8 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
             fileName = fs.path.join(fs.knownFolders.currentApp().path, fileName.replace("~/", ""));
         }
 
-        this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(new java.io.FileInputStream(new java.io.File(fileName)));
-        return this.android != null;
+        this.nativeView = new com.larvalabs.svgandroid.SVGParser.getSVGFromInputStream(new java.io.FileInputStream(new java.io.File(fileName)));
+        return this.nativeView != null;
     }
 
     public fromFile(path: string): Promise<boolean> {
@@ -94,8 +92,8 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     public loadFromData(data: any): boolean {
-        this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(data);
-        return this.android != null;
+        this.nativeView = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(data);
+        return this.nativeView != null;
     }
 
     public fromData(data: any): Promise<boolean> {
@@ -106,8 +104,8 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
 
     public loadFromBase64(source: string): boolean {
         var bytes = android.util.Base64.decode(source, android.util.Base64.DEFAULT);
-        this.android = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new java.lang.String(bytes));
-        return this.android != null;
+        this.nativeView = new com.larvalabs.svgandroid.SVGParser.getSVGFromString(new java.lang.String(bytes));
+        return this.nativeView != null;
     }
 
 
@@ -133,7 +131,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     public setNativeSource(source: any): boolean {
-        this.android = source;
+        this.nativeView = source;
         return source != null;
     }
 
@@ -143,7 +141,7 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     public toBase64String(format: string): string {
-        if (!this.android) {
+        if (!this.nativeView) {
             return null;;
         }
 
@@ -151,121 +149,111 @@ export class ImageSourceSVG implements svg.ImageSourceSVG {
     }
 
     get height(): number {
-        if (this.android) {
-            return this.android.getPitcture().getHeight();
+        if (this.nativeView) {
+            return this.nativeView.getPitcture().getHeight();
         }
 
         return NaN;
     }
 
     get width(): number {
-        if (this.android) {
-            return this.android.getPitcture().getWidth();
+        if (this.nativeView) {
+            return this.nativeView.getPitcture().getWidth();
         }
 
         return NaN;
     }
-
-
 }
-
-function onImageSourcePropertyChanged(data: dependencyObservable.PropertyChangeData) {
-    var image = <SVGImage>data.object;
-    if (!image.android) {
-        return;
-    }
-
-    image._setNativeImage(data.newValue ? data.newValue.android : null);
-}
-
-// register the setNativeValue callback
-(<proxy.PropertyMetadata>common.SVGImage.imageSourceProperty.metadata).onSetNativeValue = onImageSourcePropertyChanged;
 
 export class SVGImage extends common.SVGImage {
-    private _android: org.nativescript.widgets.ImageView;
     private _drawable: android.graphics.drawable.PictureDrawable;
 
     constructor() {
         super();
     }
 
-    get android(): org.nativescript.widgets.ImageView {
-        return this._android;
-    }
-
-    public _createUI() {
-        this._android = new org.nativescript.widgets.ImageView(this._context);        
+    public createNativeView() {
+        return new org.nativescript.widgets.ImageView(this._context);
     }
 
     public _setNativeImage(nativeImage: any) {
-        this._drawable = nativeImage.createPictureDrawable();
-        this._android.setLayerType(android.view.View.LAYER_TYPE_SOFTWARE, null);
-        this._android.setImageDrawable(this._drawable); 
-        //this.android.setNativeSource(nativeImage);
+        this._drawable = nativeImage.nativeView.createPictureDrawable();
+        this.nativeView.setLayerType(android.view.View.LAYER_TYPE_SOFTWARE, null);
+        this.nativeView.setImageDrawable(this._drawable);
+    }
+
+    [common.imageSourceProperty.setNative](value: any) {
+        var image = <SVGImage>value;
+
+        if (!image || !image.nativeView) {
+            return;
+        }
+
+        this._setNativeImage(image);
     }
 }
 
-export class ImageStyler implements style.Styler {
-    // Corner radius
-    private static setBorderRadiusProperty(v: view.View, newValue: any, defaultValue?: any) {
-        if (!v._nativeView) {
-            return;
-        }
-        var val = Math.round(newValue * utils.layout.getDisplayDensity());
-        (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(val);
-        background.ad.onBackgroundOrBorderPropertyChanged(v);
-    }
+// export class ImageStyler implements style.Styler {
+//     // Corner radius
+//     private static setBorderRadiusProperty(v: view.View, newValue: any, defaultValue?: any) {
+//         if (!v._nativeView) {
+//             return;
+//         }
+//         var val = Math.round(newValue * utils.layout.getDisplayDensity());
+//         (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(val);
+//         background.ad.onBackgroundOrBorderPropertyChanged(v);
+//     }
 
-    private static resetBorderRadiusProperty(v: view.View, nativeValue: any) {
-        if (!v._nativeView) {
-            return;
-        }
-        (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(0);
-        background.ad.onBackgroundOrBorderPropertyChanged(v);
-    }
+//     private static resetBorderRadiusProperty(v: view.View, nativeValue: any) {
+//         if (!v._nativeView) {
+//             return;
+//         }
+//         (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(0);
+//         background.ad.onBackgroundOrBorderPropertyChanged(v);
+//     }
 
-    // Border width
-    private static setBorderWidthProperty(v: view.View, newValue: any, defaultValue?: any) {
-        if (!v._nativeView) {
-            return;
-        }
+//     // Border width
+//     private static setBorderWidthProperty(v: view.View, newValue: any, defaultValue?: any) {
+//         if (!v._nativeView) {
+//             return;
+//         }
 
-        var val = Math.round(newValue * utils.layout.getDisplayDensity());
-        (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(val);
-        background.ad.onBackgroundOrBorderPropertyChanged(v);
-    }
+//         var val = Math.round(newValue * utils.layout.getDisplayDensity());
+//         (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(val);
+//         background.ad.onBackgroundOrBorderPropertyChanged(v);
+//     }
 
-    private static resetBorderWidthProperty(v: view.View, nativeValue: any) {
-        if (!v._nativeView) {
-            return;
-        }
-        (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(0);
-        background.ad.onBackgroundOrBorderPropertyChanged(v);
-    }
+//     private static resetBorderWidthProperty(v: view.View, nativeValue: any) {
+//         if (!v._nativeView) {
+//             return;
+//         }
+//         (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(0);
+//         background.ad.onBackgroundOrBorderPropertyChanged(v);
+//     }
 
-    public static registerHandlers() {
-        // Use the same handler for all background/border properties
-        // Note: There is no default value getter - the default value is handled in background.ad.onBackgroundOrBorderPropertyChanged
+//     public static registerHandlers() {
+//         // Use the same handler for all background/border properties
+//         // Note: There is no default value getter - the default value is handled in background.ad.onBackgroundOrBorderPropertyChanged
 
-        style.registerHandler(style.borderTopWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-        style.registerHandler(style.borderRightWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-        style.registerHandler(style.borderBottomWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-        style.registerHandler(style.borderLeftWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+//         style.registerHandler(style.borderTopWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+//         style.registerHandler(style.borderRightWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+//         style.registerHandler(style.borderBottomWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
+//         style.registerHandler(style.borderLeftWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
 
-        style.registerHandler(style.borderTopLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-        style.registerHandler(style.borderTopRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-        style.registerHandler(style.borderBottomRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-        style.registerHandler(style.borderBottomLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+//         style.registerHandler(style.borderTopLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+//         style.registerHandler(style.borderTopRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+//         style.registerHandler(style.borderBottomRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
+//         style.registerHandler(style.borderBottomLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
 
 
-        // style.registerHandler(style.borderRadiusProperty, new style.StylePropertyChangedHandler(
-        //     ImageStyler.setBorderRadiusProperty,
-        //     ImageStyler.resetBorderRadiusProperty), "SVGImage");
+//         // style.registerHandler(style.borderRadiusProperty, new style.StylePropertyChangedHandler(
+//         //     ImageStyler.setBorderRadiusProperty,
+//         //     ImageStyler.resetBorderRadiusProperty), "SVGImage");
 
-        // style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(
-        //     ImageStyler.setBorderWidthProperty,
-        //     ImageStyler.resetBorderWidthProperty), "SVGImage");
-    }
-}
+//         // style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(
+//         //     ImageStyler.setBorderWidthProperty,
+//         //     ImageStyler.resetBorderWidthProperty), "SVGImage");
+//     }
+// }
 
-ImageStyler.registerHandlers();
+// ImageStyler.registerHandlers();

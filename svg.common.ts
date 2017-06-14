@@ -1,89 +1,58 @@
-import dependencyObservable = require("ui/core/dependency-observable");
-import view = require("ui/core/view");
-import proxy = require("ui/core/proxy");
-import enums = require("ui/enums");
-import platform = require("platform");
-import utils = require("utils/utils");
-import * as types from "utils/types";
+import { View, Property } from "tns-core-modules/ui/core/view";
+import * as dependencyObservable from "tns-core-modules/ui/core/dependency-observable";
+// import view = require("ui/core/view");
+// import proxy = require("ui/core/proxy");
+// import enums = require("ui/enums");
+import * as platform from "tns-core-modules/platform";
+import * as utils from "tns-core-modules/utils/utils";
+import * as types from "tns-core-modules/utils/types";
 
 // This is used for definition purposes only, it does not generate JavaScript for it.
-import definition = require("nativescript-svg");
+import * as definition from "nativescript-svg";
 
 var SRC = "src";
-var IMAGE_SOURCE = "imageSourceSVG";
+var IMAGE_SOURCE = "imageSource";
 var LOAD_MODE = "loadMode";
 
 var SYNC = "sync";
 var ASYNC = "async";
 
-var IMAGE = "SVGImage";
+// var IMAGE = "SVGImage";
 var ISLOADING = "isLoading";
 
-// on Android we explicitly set propertySettings to None because android will invalidate its layout (skip unnecessary native call).
-var AffectsLayout = platform.device.os === platform.platformNames.android ? dependencyObservable.PropertyMetadataSettings.None : dependencyObservable.PropertyMetadataSettings.AffectsLayout;
+function onSrcPropertyChanged(target) {
+    var image = <SVGImage>target;
 
-function onSrcPropertyChanged(data: dependencyObservable.PropertyChangeData) {
-    var image = <SVGImage>data.object;
     // Check for delay...
     image._createImageSourceFromSrc();
 }
 
-export class SVGImage extends view.View implements definition.SVGImage {
+export const srcProperty = new Property<SVGImage, boolean>({ name: SRC, defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target._createImageSourceFromSrc() });
+export const imageSourceProperty = new Property<SVGImage, definition.ImageSourceSVG>({ name: IMAGE_SOURCE, defaultValue: undefined });
+export const isLoadingProperty = new Property<SVGImage, boolean>({ name: ISLOADING, defaultValue: false });
+export const loadModeProperty = new Property<SVGImage, string>({ name: LOAD_MODE, defaultValue: SYNC });
 
-    /**
-     * Gets the native [android widget](http://developer.android.com/reference/android/widget/ImageView.html) that represents the user interface for this component. Valid only when running on Android OS.
-    */
-    android: any /* android.widget.ImageView */;
+export class SVGImage extends View implements definition.SVGImage {
+    src: any;
+    // public static srcProperty = new dependencyObservable.Property(SRC, IMAGE,
+    //     new dependencyObservable.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None, onSrcPropertyChanged));
 
-    /**
-     * Gets the native iOS [UIImageView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/) that represents the user interface for this component. Valid only when running on iOS.
-     */
-    ios: any /* UIImageView */;
-
-    public static srcProperty = new dependencyObservable.Property(SRC, IMAGE,
-        new dependencyObservable.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None, onSrcPropertyChanged));
-
+    imageSource: definition.ImageSourceSVG;
     // None on purpose. for iOS we trigger it manually if needed. Android layout handles it.
-    public static imageSourceProperty = new dependencyObservable.Property(IMAGE_SOURCE, IMAGE,
-        new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
+    // public static imageSourceProperty = new dependencyObservable.Property(IMAGE_SOURCE, IMAGE,
+    //     new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
 
-    public static isLoadingProperty = new dependencyObservable.Property(ISLOADING, IMAGE,
-        new dependencyObservable.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
+    isLoading: boolean;
+    // public static isLoadingProperty = new dependencyObservable.Property(ISLOADING, IMAGE,
+    //     new dependencyObservable.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
 
-    public static loadModeProperty = new dependencyObservable.Property(LOAD_MODE, IMAGE,
-        new proxy.PropertyMetadata(SYNC, 0, null, (value) => value === SYNC || value === ASYNC, null));
+    loadMode: "sync" | "async";
+    // public static loadModeProperty = new dependencyObservable.Property(LOAD_MODE, IMAGE,
+    //     new proxy.PropertyMetadata(SYNC, 0, null, (value) => value === SYNC || value === ASYNC, null));
 
     constructor(options?: definition.Options) {
-        super(options);
-    }
-
-    get src(): any {
-        return this._getValue(SVGImage.srcProperty);
-    }
-    set src(value: any) {
-        this._setValue(SVGImage.srcProperty, value);
-    }
-
-    get imageSource(): definition.ImageSourceSVG {
-        return this._getValue(SVGImage.imageSourceProperty);
-    }
-    set imageSource(value: definition.ImageSourceSVG) {
-        this._setValue(SVGImage.imageSourceProperty, value);
-    }
-
-    get isLoading(): boolean {
-        return this._getValue(SVGImage.isLoadingProperty);
-    }
-
-    get loadMode(): "sync" | "async" {
-        return this._getValue(SVGImage.loadModeProperty);
-    }
-    set loadMode(value: "sync" | "async") {
-        this._setValue(SVGImage.loadModeProperty, value);
-    }
-
-    public _setNativeImage(nativeImage: any) {
-        //
+        // super(options);
+        super();
     }
 
     /**
@@ -96,7 +65,8 @@ export class SVGImage extends view.View implements definition.SVGImage {
             this.imageSource = null;
             this["_url"] = value;
 
-            this._setValue(SVGImage.isLoadingProperty, true);
+            // this._setValue(SVGImage.isLoadingProperty, true);
+            this.isLoading = true;
 
             var source = new definition.ImageSourceSVG();
             var imageLoaded = () => {
@@ -105,7 +75,9 @@ export class SVGImage extends view.View implements definition.SVGImage {
                     return;
                 }
                 this.imageSource = source;
-                this._setValue(SVGImage.isLoadingProperty, false);
+                // imageSourceProperty.nativeValueChange(this, source);
+                // this._setValue(SVGImage.isLoadingProperty, false);
+                this.isLoading = false;
             }
             //WRONG IMplementation, it can't load data uri, just base xml encode
             if (utils.isDataURI(value)) {
@@ -143,7 +115,8 @@ export class SVGImage extends view.View implements definition.SVGImage {
                 definition.fromUrl(value).then((r) => {
                     if (this["_url"] === value) {
                         this.imageSource = r;
-                        this._setValue(SVGImage.isLoadingProperty, false);
+                        // this._setValue(SVGImage.isLoadingProperty, false);
+                        this.isLoading = false;
                     }
                 });
             }
@@ -151,11 +124,14 @@ export class SVGImage extends view.View implements definition.SVGImage {
         else if (value instanceof definition.ImageSourceSVG) {
             // Support binding the imageSource trough the src property
             this.imageSource = value;
-            this._setValue(SVGImage.isLoadingProperty, false);
+            // this._setValue(SVGImage.isLoadingProperty, false);
+            this.isLoading = false;
+
         }
         else {
             this.imageSource = definition.fromNativeSource(value);
-            this._setValue(SVGImage.isLoadingProperty, false);
+            // this._setValue(SVGImage.isLoadingProperty, false);
+            this.isLoading = false;
         }
     }
 
@@ -205,3 +181,8 @@ export function fromFileOrResource(path: string): definition.ImageSourceSVG {
 export function isFileOrResourcePath(path: string): boolean {
     return utils.isFileOrResourcePath(path);
 }
+
+srcProperty.register(SVGImage);
+imageSourceProperty.register(SVGImage);
+loadModeProperty.register(SVGImage);
+isLoadingProperty.register(SVGImage);

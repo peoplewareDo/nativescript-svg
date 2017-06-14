@@ -1,23 +1,11 @@
-/// <reference path="./demo/node_modules/tns-core-modules/http/http.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/utils/types.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/utils/utils.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/enums/enums.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/core/dependency-observable.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/core/proxy.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/styling/styling.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/core/view.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/ui/styling/background.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/file-system/file-system.d.ts"/>
-/// <reference path="./demo/node_modules/tns-core-modules/platform/platform.d.ts"/>
-
 /**
  * Allows you to parser SVG files.
  */
 
 declare module 'nativescript-svg' {
 
-    import dependencyObservable = require("ui/core/dependency-observable");
-    import * as view from "ui/core/view";
+    import dependencyObservable = require("tns-core-modules/ui/core/dependency-observable");
+    import * as view from "tns-core-modules/ui/core/view";
 
     /**
      * Represents a class that provides functionality for loading svg(s).
@@ -26,16 +14,6 @@ declare module 'nativescript-svg' {
         public static srcProperty: dependencyObservable.Property;
         public static imageSourceProperty: dependencyObservable.Property;
         public static isLoadingProperty: dependencyObservable.Property;
-
-        /**
-         * Gets the native [android widget](http://developer.android.com/reference/android/widget/ImageView.html) that represents the user interface for this component. Valid only when running on Android OS.
-        */
-        android: any /* android.widget.ImageView */;
-
-        /**
-         * Gets the native iOS [UIImageView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/) that represents the user interface for this component. Valid only when running on iOS.
-         */
-        ios: any /* UIImageView */;
 
         /**
          * Gets or sets the image source of the image.
@@ -61,16 +39,16 @@ declare module 'nativescript-svg' {
     }
 
 
-   /**
-   * Provides common options for creating a animation
-   */
-    export interface Options extends view.Options {
+    /**
+    * Provides common options for creating a animation
+    */
+    export interface Options {
 
         /**
          * Gets or sets the URL of the svg
          */
         src: string;
-    }    
+    }
 
     /**
      * Encapsulates the common abstraction behind a platform specific object SVG that is used as a source for images.
@@ -86,15 +64,6 @@ declare module 'nativescript-svg' {
          * Gets the width of this instance. This is a read-only property.
          */
         width: number;
-        /**
-         * The iOS-specific instance. Will be undefined when running on Android.
-         */
-        ios: any /* SVGKImage */;
-
-        /**
-         * The Android-specific instance. Will be undefined when running on iOS. 
-         */
-        android: any /* com.larvalabs.svgandroid.SVG */;
 
         /**
          * Loads this instance from the specified resource name.

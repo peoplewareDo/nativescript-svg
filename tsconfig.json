@@ -1,29 +1,23 @@
 {
-    "version": "1.6.2",
     "compilerOptions": {
-	    "target": "es5",
         "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
         "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "declaration": false,
+        "noLib": false,
+        "noEmitHelpers": true,
         "experimentalDecorators": true,
-        "noImplicitUseStrict": true,
-        "sourceMap": true
+        "lib": [
+            "es6",
+            "dom"
+        ]
     },
-    "filesGlob": [
-        "**/*.ts",
-        "!node_modules/**/*.*",
-        "!bin/**/*.*",
-        "!build/**/*.*",
-        "!Deploy/**/*.*",
-        "!out/**/*.*",
-        "!.*/**/*.*",
-        "!obj/**/*.*"
-    ],
-    "files": [
-        "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
-        "svg.d.ts",
-        "svg.common.ts",
-        "svg.ios.ts",
-        "svg.android.ts"
-    ],
-    "compileOnSave": true
+    "exclude": [
+        "node_modules",
+        "platforms",
+        "demo"
+    ]
 }
