@@ -1,11 +1,7 @@
-svg.d.js
-svg.common.js
-svg.ios.js
-svg.android.js
-*.js.map
-*.log
+src/*.js
+src/*.js.map
+src/node_modules
 demo/*.d.ts
 demo/platforms
 demo/node_modules
-node_modules
 .vscode
