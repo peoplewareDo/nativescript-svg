@@ -179,13 +179,6 @@ function getImageData(instance: any): NSData {
     // return NSData.alloc().initWithBytes(buffer, NSDataBase64DecodingOptions.NSDataBase64DecodingIgnoreUnknownCharacters);
 }
 
-// function onImageSourcePropertyChanged(data: dependencyObservable.PropertyChangeData) {
-//     var image = <SVGImage>data.object;
-//     image._setNativeImage(data.newValue ? data.newValue.ios : null);
-// }
-
-// register the setNativeValue callback
-// (<proxy.PropertyMetadata>common.SVGImage.imageSourceProperty.metadata).onSetNativeValue = onImageSourcePropertyChanged;
 declare var SVGKFastImageView: any;
 
 export class SVGImage extends common.SVGImage {
@@ -195,14 +188,14 @@ export class SVGImage extends common.SVGImage {
         super();
 
         //TODO: Think of unified way of setting all the default values.
-        this.nativeView = new SVGKFastImageView();
+        this.nativeView = SVGKFastImageView.alloc().initWithSVGKImage(new SVGKImage());
         //this._ios.contentMode = UIViewContentMode.UIViewContentModeScaleAspectFit;
         //this._ios.clipsToBounds = true;
         //this._ios.userInteractionEnabled = true;
     }
 
     public _setNativeImage(nativeImage: any) {
-        this.nativeView.image = nativeImage;
+        this.nativeView.image = nativeImage.nativeView;
 
         if (this._imageSourceAffectsLayout) {
             this.requestLayout();
@@ -254,10 +247,11 @@ export class SVGImage extends common.SVGImage {
 
     [common.imageSourceProperty.setNative](value: any) {
         var image = <SVGImage>value;
-        if (!image.nativeView) {
+
+        if (!image || !image.nativeView) {
             return;
         }
 
-        image._setNativeImage(image);
+        this._setNativeImage(image);
     }
 } 

@@ -27,7 +27,7 @@ function createViewModel() {
     viewModel.message2 = loaded ? "there is object" : "there isn't object";
 
     viewModel.onTap = function () {
-        this.set("svgSrc", '~/images/nativescript.svg');
+        // this.set("svgSrc", '~/images/nativescript.svg');
         this.counter--;
         this.set("message", getMessage(this.counter));
     }

@@ -1,8 +1,5 @@
 import { View, Property } from "tns-core-modules/ui/core/view";
 import * as dependencyObservable from "tns-core-modules/ui/core/dependency-observable";
-// import view = require("ui/core/view");
-// import proxy = require("ui/core/proxy");
-// import enums = require("ui/enums");
 import * as platform from "tns-core-modules/platform";
 import * as utils from "tns-core-modules/utils/utils";
 import * as types from "tns-core-modules/utils/types";
@@ -13,19 +10,9 @@ import * as definition from "nativescript-svg";
 var SRC = "src";
 var IMAGE_SOURCE = "imageSource";
 var LOAD_MODE = "loadMode";
-
 var SYNC = "sync";
 var ASYNC = "async";
-
-// var IMAGE = "SVGImage";
 var ISLOADING = "isLoading";
-
-function onSrcPropertyChanged(target) {
-    var image = <SVGImage>target;
-
-    // Check for delay...
-    image._createImageSourceFromSrc();
-}
 
 export const srcProperty = new Property<SVGImage, boolean>({ name: SRC, defaultValue: undefined, valueChanged: (target, oldValue, newValue) => target._createImageSourceFromSrc() });
 export const imageSourceProperty = new Property<SVGImage, definition.ImageSourceSVG>({ name: IMAGE_SOURCE, defaultValue: undefined });
@@ -34,21 +21,9 @@ export const loadModeProperty = new Property<SVGImage, string>({ name: LOAD_MODE
 
 export class SVGImage extends View implements definition.SVGImage {
     src: any;
-    // public static srcProperty = new dependencyObservable.Property(SRC, IMAGE,
-    //     new dependencyObservable.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None, onSrcPropertyChanged));
-
     imageSource: definition.ImageSourceSVG;
-    // None on purpose. for iOS we trigger it manually if needed. Android layout handles it.
-    // public static imageSourceProperty = new dependencyObservable.Property(IMAGE_SOURCE, IMAGE,
-    //     new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
-
     isLoading: boolean;
-    // public static isLoadingProperty = new dependencyObservable.Property(ISLOADING, IMAGE,
-    //     new dependencyObservable.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
-
     loadMode: "sync" | "async";
-    // public static loadModeProperty = new dependencyObservable.Property(LOAD_MODE, IMAGE,
-    //     new proxy.PropertyMetadata(SYNC, 0, null, (value) => value === SYNC || value === ASYNC, null));
 
     constructor(options?: definition.Options) {
         // super(options);
