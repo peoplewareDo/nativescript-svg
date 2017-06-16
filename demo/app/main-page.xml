@@ -5,8 +5,7 @@
     <Button text="TAP" tap="{{ onTap }}" />
     <Label text="{{ message }}" class="message" textWrap="true"/>
     <Label text="{{ message2 }}" class="message" textWrap="true"/>
-    <svg:SVGImage src="~/images/nativescript.svg" height="100"/>
-    <svg:SVGImage src="~/images/spider-test.svg" />
+    <svg:SVGImage src="~/images/nativescript.svg" /> 
 
     <!-- <svg:SVGImage width="333" height="261" viewBox="0 0 333 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
         <g id="User-Profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
