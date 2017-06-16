@@ -4,4 +4,7 @@ src/node_modules
 demo/*.d.ts
 demo/platforms
 demo/node_modules
+demo-angular/*.d.ts
+demo-angular/platforms
+demo-angular/node_modules
 .vscode
