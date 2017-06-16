@@ -32,6 +32,13 @@
     "name": "Victor Sosa",
     "email": "victor.sosa@peopleware.do"
   },
+  "contributors": [
+    {
+      "name": "Brad Martin",
+      "email": "bmartin@nstudio.io",
+      "url": "https://github.com/bradmartin"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/peoplewareDo/nativescript-svg/issues"
   },
