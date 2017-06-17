@@ -1,19 +1,17 @@
 /**
- * Allows you to parser SVG files.
+ * Allows you to parse SVG files.
  */
 
-declare module 'nativescript-svg' {
-
-    import dependencyObservable = require("tns-core-modules/ui/core/dependency-observable");
-    import * as view from "tns-core-modules/ui/core/view";
+    import { Property } from "tns-core-modules/ui/core/dependency-observable";
+    import { View } from "tns-core-modules/ui/core/view";
 
     /**
      * Represents a class that provides functionality for loading svg(s).
      */
-    export class SVGImage extends view.View {
-        public static srcProperty: dependencyObservable.Property;
-        public static imageSourceProperty: dependencyObservable.Property;
-        public static isLoadingProperty: dependencyObservable.Property;
+    export class SVGImage extends View {
+        public static srcProperty: Property;
+        public static imageSourceProperty: Property;
+        public static isLoadingProperty: Property;
 
         /**
          * Gets or sets the image source of the image.
@@ -193,6 +191,3 @@ declare module 'nativescript-svg' {
      * @param path The path.
      */
     export function isFileOrResourcePath(path: string): boolean
-}
-
-

@@ -1,11 +1,9 @@
 import { View, Property } from "tns-core-modules/ui/core/view";
-import * as dependencyObservable from "tns-core-modules/ui/core/dependency-observable";
-import * as platform from "tns-core-modules/platform";
 import * as utils from "tns-core-modules/utils/utils";
-import * as types from "tns-core-modules/utils/types";
+import * as types from "tns-core-modules/utils/types"
 
 // This is used for definition purposes only, it does not generate JavaScript for it.
-import * as definition from "nativescript-svg";
+import * as definition from "./svg";
 
 var SRC = "src";
 var IMAGE_SOURCE = "imageSource";

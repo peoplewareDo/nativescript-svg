@@ -1,9 +1,7 @@
-import svg = require("nativescript-svg");
+import svg = require("./svg");
 import common = require("./svg.common");
 import types = require("tns-core-modules/utils/types");
 import fs = require("tns-core-modules/file-system");
-import dependencyObservable = require("tns-core-modules/ui/core/dependency-observable");
-import enums = require("tns-core-modules/ui/enums");
 
 global.moduleMerge(common, exports);
 declare var SVGKImage: any;
