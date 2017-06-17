@@ -1,15 +1,8 @@
-import svg = require("nativescript-svg");
+import svg = require("./svg");
 import common = require("./svg.common");
 import types = require("tns-core-modules/utils/types");
 import * as utilsModule from "tns-core-modules/utils/utils";
 import * as fileSystemModule from "tns-core-modules/file-system";
-import * as enumsModule from "tns-core-modules/ui/enums";
-
-import dependencyObservable = require("tns-core-modules/ui/core/dependency-observable");
-import style = require("tns-core-modules/ui/styling/style");
-import view = require("tns-core-modules/ui/core/view");
-import background = require("tns-core-modules/ui/styling/background");
-
 import * as httpModule from "tns-core-modules/http";
 
 var http: typeof httpModule;
@@ -32,13 +25,6 @@ var fs: typeof fileSystemModule;
 function ensureFS() {
     if (!fs) {
         fs = require("file-system");
-    }
-}
-
-var enums: typeof enumsModule;
-function ensureEnums() {
-    if (!enums) {
-        enums = require("ui/enums");
     }
 }
 
@@ -192,68 +178,3 @@ export class SVGImage extends common.SVGImage {
         this._setNativeImage(image);
     }
 }
-
-// export class ImageStyler implements style.Styler {
-//     // Corner radius
-//     private static setBorderRadiusProperty(v: view.View, newValue: any, defaultValue?: any) {
-//         if (!v._nativeView) {
-//             return;
-//         }
-//         var val = Math.round(newValue * utils.layout.getDisplayDensity());
-//         (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(val);
-//         background.ad.onBackgroundOrBorderPropertyChanged(v);
-//     }
-
-//     private static resetBorderRadiusProperty(v: view.View, nativeValue: any) {
-//         if (!v._nativeView) {
-//             return;
-//         }
-//         (<org.nativescript.widgets.ImageView>v._nativeView).setCornerRadius(0);
-//         background.ad.onBackgroundOrBorderPropertyChanged(v);
-//     }
-
-//     // Border width
-//     private static setBorderWidthProperty(v: view.View, newValue: any, defaultValue?: any) {
-//         if (!v._nativeView) {
-//             return;
-//         }
-
-//         var val = Math.round(newValue * utils.layout.getDisplayDensity());
-//         (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(val);
-//         background.ad.onBackgroundOrBorderPropertyChanged(v);
-//     }
-
-//     private static resetBorderWidthProperty(v: view.View, nativeValue: any) {
-//         if (!v._nativeView) {
-//             return;
-//         }
-//         (<org.nativescript.widgets.ImageView>v._nativeView).setBorderWidth(0);
-//         background.ad.onBackgroundOrBorderPropertyChanged(v);
-//     }
-
-//     public static registerHandlers() {
-//         // Use the same handler for all background/border properties
-//         // Note: There is no default value getter - the default value is handled in background.ad.onBackgroundOrBorderPropertyChanged
-
-//         style.registerHandler(style.borderTopWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-//         style.registerHandler(style.borderRightWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-//         style.registerHandler(style.borderBottomWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-//         style.registerHandler(style.borderLeftWidthProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderWidthProperty, ImageStyler.resetBorderWidthProperty), "SVGImage");
-
-//         style.registerHandler(style.borderTopLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-//         style.registerHandler(style.borderTopRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-//         style.registerHandler(style.borderBottomRightRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-//         style.registerHandler(style.borderBottomLeftRadiusProperty, new style.StylePropertyChangedHandler(ImageStyler.setBorderRadiusProperty, ImageStyler.resetBorderRadiusProperty), "SVGImage");
-
-
-//         // style.registerHandler(style.borderRadiusProperty, new style.StylePropertyChangedHandler(
-//         //     ImageStyler.setBorderRadiusProperty,
-//         //     ImageStyler.resetBorderRadiusProperty), "SVGImage");
-
-//         // style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(
-//         //     ImageStyler.setBorderWidthProperty,
-//         //     ImageStyler.resetBorderWidthProperty), "SVGImage");
-//     }
-// }
-
-// ImageStyler.registerHandlers();
