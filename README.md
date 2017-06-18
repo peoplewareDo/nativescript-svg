@@ -99,6 +99,8 @@ ver 1.5 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ### Release note
+v1.3.4 -- Angular 4 support, please check example code
+
 v1.3.0 -- NS 3+ implementation and it will work with angular if you call registerElement before using it. Thanks to @tbozhikov
 
 v1.1.4 -- Fix svg & demo
