@@ -99,6 +99,8 @@ ver 1.5 Change api dependency from pents90/svg-android to Pixplicity/sharp
 
 
 ### Release note
+v1.3.7 -- Fix missing .JS file in the npm package build because npmignore file in the wrong place
+
 v1.3.5 -- Fix missing .JS file in the npm package build
 
 v1.3.4 -- Angular 4 support, please check example code
