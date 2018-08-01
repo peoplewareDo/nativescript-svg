@@ -1,3 +1,4 @@
 demo/
 .vscode
-
+src/**/*.ts
+!src/**/*.d.ts

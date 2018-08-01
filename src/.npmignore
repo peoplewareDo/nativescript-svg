@@ -1,0 +1,4 @@
+demo/
+.vscode
+**/*.ts
+!**/*.d.ts
